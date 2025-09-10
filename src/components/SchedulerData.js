@@ -176,8 +176,8 @@ export default class SchedulerData {
       } else {
         if (this.viewType < viewType) {
           if (viewType === ViewType.Week) {
-            this.startDate = this.localeDayjs(new Date(date)).startOf('week');
-            this.endDate = this.localeDayjs(new Date(this.startDate)).endOf('week');
+            this.startDate = this.localeDayjs(new Date(date)).startOf('isoweek');
+            this.endDate = this.localeDayjs(new Date(this.startDate)).endOf('isoweek');
           } else if (viewType === ViewType.Month) {
             this.startDate = this.localeDayjs(new Date(date)).startOf('month');
             this.endDate = this.localeDayjs(new Date(this.startDate)).endOf('month');
