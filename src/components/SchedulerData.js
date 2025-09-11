@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import quarterOfYear from 'dayjs/plugin/quarterOfYear';
 import utc from 'dayjs/plugin/utc';
 import weekday from 'dayjs/plugin/weekday';
+import isoWeek from 'dayjs/plugin/isoWeek';
 import { RRuleSet, rrulestr } from 'rrule';
 import { CellUnit, DATE_FORMAT, DATETIME_FORMAT, ViewType } from '../config/default';
 import config from '../config/scheduler';
@@ -27,6 +28,7 @@ export default class SchedulerData {
     this.calendarPopoverLocale = undefined;
     dayjs.extend(quarterOfYear);
     dayjs.extend(weekday);
+    dayjs.extend(isoWeek);
     dayjs.extend(utc);
     this.localeDayjs = dayjs;
     this.config = newConfig === undefined ? config : { ...config, ...newConfig };
@@ -176,8 +178,8 @@ export default class SchedulerData {
       } else {
         if (this.viewType < viewType) {
           if (viewType === ViewType.Week) {
-            this.startDate = this.localeDayjs(new Date(date)).startOf('isoweek');
-            this.endDate = this.localeDayjs(new Date(this.startDate)).endOf('isoweek');
+            this.startDate = this.localeDayjs(new Date(date)).startOf('isoWeek');
+            this.endDate = this.localeDayjs(new Date(this.startDate)).endOf('isoWeek');
           } else if (viewType === ViewType.Month) {
             this.startDate = this.localeDayjs(new Date(date)).startOf('month');
             this.endDate = this.localeDayjs(new Date(this.startDate)).endOf('month');
