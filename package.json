@@ -37,10 +37,11 @@
   "files": [
     "dist",
     "README.md",
-    "License"
+    "License",
+    "index.d.ts"
   ],
   "main": "dist/index.js",
-  "types":"index.d.ts",
+  "types":"./index.d.ts",
   "homepage": "https://react-big-schedule.vercel.app",
   "repository": {
     "type": "git",
